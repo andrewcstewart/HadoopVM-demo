@@ -1,4 +1,4 @@
 
+$ vagrant up
 
-vagrant up
-fab vagrant setup start
+$ fab vagrant setup start
