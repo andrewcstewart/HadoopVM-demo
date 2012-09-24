@@ -9,10 +9,10 @@ Vagrant::Config.run do |config|
 
   config.vm.box = "centos6"
   
-  Vagrant::Config.run do |config|
-    # ...
-    config.vm.host_name = "bdpuh"
-  end
+  # machine options?
+  # cpu, memory etc
+  
+  config.vm.host_name = "bdpuh"
 
   # TODO: modify username to hadoop (http://stackoverflow.com/questions/9882074/how-do-i-create-user-account-by-chef-solo)
   #config.ssh.username = "hadoop"
@@ -20,6 +20,7 @@ Vagrant::Config.run do |config|
   config.vm.forward_port 80,5680
   config.vm.forward_port 22,5622
   config.vm.forward_port 50070,55670
+  config.vm.forward_port 50030,55630
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.

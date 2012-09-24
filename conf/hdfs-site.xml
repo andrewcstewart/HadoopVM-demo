@@ -15,8 +15,7 @@
 </property>
   <property>
     <name>dfs.name.dir</name>
-    <value>/usr/local/hadoop/disk/namenode-local,/usr/local/hadoop/disk/namenode-
-nfs</value>
+    <value>/usr/local/hadoop/disk/namenode-local,/usr/local/hadoop/disk/namenode-nfs</value>
   </property>
   <property>
      <name>dfs.data.dir</name>
