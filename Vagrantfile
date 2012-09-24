@@ -8,7 +8,14 @@ Vagrant::Config.run do |config|
   # please see the online documentation at vagrantup.com.
 
   config.vm.box = "centos6"
-  config.ssh.username = "hadoop"
+  
+  Vagrant::Config.run do |config|
+    # ...
+    config.vm.host_name = "bdpuh"
+  end
+
+  # TODO: modify username to hadoop (http://stackoverflow.com/questions/9882074/how-do-i-create-user-account-by-chef-solo)
+  #config.ssh.username = "hadoop"
   
   config.vm.forward_port 80,5680
   config.vm.forward_port 22,5622
