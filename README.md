@@ -1,4 +1,10 @@
+Requirements
+------------
+* vagrant
+* fabric
 
-$ vagrant up
+Usage
+-----
+    $ vagrant up
+    $ fab vagrant setup start
 
-$ fab vagrant setup start
