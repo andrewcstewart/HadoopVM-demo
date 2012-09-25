@@ -12,7 +12,7 @@ Vagrant::Config.run do |config|
   # machine options?
   # cpu, memory etc
   
-  config.vm.host_name = "bdpuh"
+#  config.vm.host_name = "bdpuh"
 
   # TODO: modify username to hadoop (http://stackoverflow.com/questions/9882074/how-do-i-create-user-account-by-chef-solo)
   #config.ssh.username = "hadoop"

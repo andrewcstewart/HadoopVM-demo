@@ -1,7 +1,9 @@
 Requirements
 ------------
-* vagrant
-* fabric
+* VirtualBox http://www.virtualbox.org/wiki/Downloads
+* Vagrant (gem install vagrant)
+* Fabric (pip install fabric)
+* fexpect (pip install fexpect)
 
 Usage
 -----
