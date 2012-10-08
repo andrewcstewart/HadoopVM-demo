@@ -1,4 +1,8 @@
 #!/usr/bin/env python
+#
+# TODO:
+# - PATH=/usr/local/hadoop/hadoop-1.0.3/bin:/usr/lib/jvm/java/ bin:$PATH
+#
 
 from fabric.api import run, put, cd, env, get, sudo, settings
 from fabric.contrib.files import exists, append, contains
@@ -8,6 +12,11 @@ import fabric
 import pexpect
 #from fexpect import expect
 import os.path
+
+#import os
+#os.env['disable-known-hosts'] = True
+
+env.disable_known_hosts = True
 
 tunnelsettings = {
 
@@ -107,11 +116,12 @@ def setup():
 		sudo("yum -y install java-1.6.0-openjdk-devel.x86_64")
 		#Is this ok [y/N]: Y
 
-		run("echo 'export JAVA_HOME=/usr/lib/jvm/java' >> .bash_profile")  #TODO: apply this to config
+		run("echo 'export JAVA_HOME=/usr/lib/jvm/java' >> .bash_profile")  #TODO: apply this to config (.bashrc ?)
 		run("echo 'export PATH=/usr/local/hadoop/hadoop-1.0.3/bin:/usr/lib/jvm/java/bin:$PATH' >> .bash_profile")
 		
 		#Update /etc/hosts with current host info
-		sudo("perl -p -i -e 's/%(line)s/%(line)s bdpuh/g' /etc/hosts" % {'line' : "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4"})
+#		sudo("perl -p -i -e 's/%(line)s/%(line)s bdpuh/g' /etc/hosts" % {'line' : "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4"})
+		sudo("perl -p -i -e 's/%(line)s/%(line)s vagrant/g' /etc/hosts" % {'line' : "127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4"})
 
 		#Format NameNode
 		with cd("/usr/local/hadoop/hadoop-1.0.3/bin"):
@@ -119,10 +129,19 @@ def setup():
 		
 @task
 def start():
-	# Start hadoop
-	run("start-dfs.sh")
-	run("start-mapred.sh")
-	run("start-all.sh")
-	
-	# check
-	run("jps")
+	with mysettings():	
+		# Start hadoop
+		run("start-dfs.sh")
+		run("start-mapred.sh")
+		run("start-all.sh")     
+		# check
+		run("jps")
+		
+@task
+def stop():
+	with mysettings():
+		#Stop hadoop
+		run("stop-dfs.sh")
+		run("stop-mapred.sh")
+		run("stop-all.sh")     
+		

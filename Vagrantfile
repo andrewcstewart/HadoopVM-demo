@@ -27,7 +27,7 @@ Vagrant::Config.run do |config|
   config.vm.box_url = "http://download.frameos.org/vagrant/centos6-64-nochef-nopuppet.box"
 
   # Boot with a GUI so you can see the screen. (Default is headless)
-  #config.vm.boot_mode = :gui
+  config.vm.boot_mode = :gui
 
 
 end

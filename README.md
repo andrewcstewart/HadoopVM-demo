@@ -8,5 +8,6 @@ Requirements
 Usage
 -----
     $ vagrant up
-    $ fab vagrant setup start
-
+    $ fab vagrant setup
+    $ fab vagrant start
+    $ fab vagrant stop
